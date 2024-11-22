@@ -1,0 +1,36 @@
+<h1>Roles for group {{selectedGroupName}}</h1>
+<input id="search" type="text" [(ngModel)]="searchRoles" placeholder="Type to search">
+<select id="select" [ngModel]="selectedFilter" (ngModelChange)="selectedFilter = +$event">
+  <option *ngFor="let option of filterRoles" [value]="option.value">{{option.key}}</option>
+</select>
+<div class="roles">
+  <div class="role" *ngFor="let role of roles">
+    <input
+      type="checkbox"
+      id="role-checkbox-{{role.id}}}"
+      [checked]="selectedRoles.includes(role)"
+      [ngModel]="selectedRoles.includes(role)"
+      (ngModelChange)="selectRole.emit(role)"
+    >
+    <label for="role-checkbox-{{role.id}}}">{{ role.name }}</label>
+    <img
+      (click)="editRole(role)"
+      class="edit-role"
+      ngSrc="assets/svg/edit-pencil.svg"
+      alt="edit"
+      height="15"
+      width="15"
+    >
+    <img
+      (click)="deleteRole(role)"
+      class="delete-role"
+      ngSrc="assets/svg/trash-blank-alt.svg"
+      alt="delete"
+      height="15"
+      width="15"
+    >
+  </div>
+</div>
+<div class="add-new-role" (click)="addNewRole()">
+  <img ngSrc="assets/svg/plus.svg" alt="add" height="10" width="10">Add new role
+</div>

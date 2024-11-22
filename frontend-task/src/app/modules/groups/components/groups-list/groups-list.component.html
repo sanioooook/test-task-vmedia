@@ -1,0 +1,30 @@
+<h1>Groups</h1>
+<div class="groups">
+  <div class="group" [ngClass]="{'selected': selectedGroup?.id == group.id}" *ngFor="let group of allGroups">
+    <div
+      class="group-name"
+      (click)="selectGroup.emit(group)"
+    >{{ group.name }}
+      <img
+        (click)="onEditGroup(group)"
+        class="edit-group"
+        ngSrc="assets/svg/edit-pencil.svg"
+        alt="edit"
+        height="15"
+        width="15"
+      >
+      <img
+        (click)="onDeleteGroup(group)"
+        class="delete-group"
+        ngSrc="assets/svg/trash-blank-alt.svg"
+        alt="delete"
+        height="15"
+        width="15"
+      >
+    </div>
+  </div>
+</div>
+<div class="add-new-group"
+  (click)="addNewGroup()">
+  <img ngSrc="assets/svg/plus.svg" alt="add" height="10" width="10">Add new group
+</div>

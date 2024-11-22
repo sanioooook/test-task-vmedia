@@ -1,0 +1,20 @@
+<div class="display-grid">
+  <app-groups-list
+    [allGroups]="allGroups"
+    [selectedGroup]="selectedGroup"
+    (addGroup)="addGroup($event)"
+    (deleteGroup)="deleteGroup($event)"
+    (updateGroup)="updateGroup($event)"
+    (selectGroup)="selectedGroup = $event"
+  />
+  <app-roles-list
+    *ngIf="selectedGroup"
+    [selectedGroupName]="selectedGroup.name"
+    [allRoles]="allRoles"
+    [selectedRoles]="rolesBySelectedGroup"
+    (createdRole)="createdRole($event)"
+    (deletedRole)="deletedRole($event)"
+    (updateRole)="updateRole($event)"
+    (selectRole)="selectRole($event)"
+  />
+</div>
